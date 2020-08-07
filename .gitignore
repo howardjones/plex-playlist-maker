@@ -1,0 +1,5 @@
+venv/
+*.pyc
+.idea/
+config.ini
+local.json
