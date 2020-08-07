@@ -1,0 +1,8 @@
+[DEFAULT]
+source_chart=https://api.radarr.video/v2/imdb/top250
+
+username=user@example.com
+password=password
+server=MyPlexServer
+playlist_name=IMDB Top 250
+cache_file=local.json
