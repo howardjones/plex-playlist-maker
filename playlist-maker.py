@@ -1,15 +1,17 @@
 import json
 import os
-import requests
 from configparser import ConfigParser
-from plexapi.myplex import MyPlexAccount
+
+import requests
 from plexapi import playlist
+from plexapi.myplex import MyPlexAccount
 
 """ Python 3.6 script to read the IMDB Top 250 from the Radarr API, and
 create a playlist for all the movies in it (that you have) in your Plex Media Server.
 
 """
 
+# set to False to do searches without altering Plex playlist
 live = True
 
 config = ConfigParser()
@@ -76,7 +78,6 @@ res = find_movie(movies, first['title'], int(first['release_year']))
 
 if live:
     all_playlists = plex.playlists()
-    print(all_playlists)
 
     for pl in all_playlists:
         if pl.title == config['DEFAULT']['playlist_name']:
@@ -102,7 +103,6 @@ for m in top250:
         title = corrections[title]
     year = int(m['release_year'])
 
-    print(f"Searching for {title} ({year})")
     res = find_movie(movies, title, year)
     if live:
         if res:
@@ -110,7 +110,8 @@ for m in top250:
         else:
             missed.append(f"{title} ({year})")
 
-print("DONE!")
+print("DONE!\n")
 
+print("----------------------------------\nMissing from your Plex collection:\n")
 for m in missed:
-    print("MISSING: " + m)
+    print("  MISSING: " + m)

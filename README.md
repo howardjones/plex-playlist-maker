@@ -3,6 +3,8 @@
 Python 3.6 script to read the IMDB Top 250 from the Radarr API, and
 create a playlist for all the movies in it (that you have) in your Plex Media Server.
 
+    git clone https://github.com/howardjones/plex-playlist-maker.git
+    cd plex-playlist-maker
     # create a config.ini (sample supplied)
     pip install -r requirements.txt
     python3 playlist-maker.py
